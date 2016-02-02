@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         viewPager.addOnPageChangeListener(this);
 
         tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home_pink_36dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_white_36dp);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_settings_applications_white_36dp);
     }
 
     @Override
@@ -62,6 +67,24 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageSelected(int position) {
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
+        switch(position) {
+            case 0:
+                tabLayout.getTabAt(0).setIcon(R.drawable.ic_home_pink_36dp);
+                tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_white_36dp);
+                tabLayout.getTabAt(2).setIcon(R.drawable.ic_settings_applications_white_36dp);
+                break;
+            case 1:
+                tabLayout.getTabAt(0).setIcon(R.drawable.ic_home_white_36dp);
+                tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_pink_36dp);
+                tabLayout.getTabAt(2).setIcon(R.drawable.ic_settings_applications_white_36dp);
+                break;
+            case 2:
+                tabLayout.getTabAt(0).setIcon(R.drawable.ic_home_white_36dp);
+                tabLayout.getTabAt(1).setIcon(R.drawable.ic_search_white_36dp);
+                tabLayout.getTabAt(2).setIcon(R.drawable.ic_settings_applications_pink_36dp);
+                break;
+        }
     }
 
     @Override
