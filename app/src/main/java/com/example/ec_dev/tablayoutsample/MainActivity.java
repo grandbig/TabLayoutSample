@@ -17,8 +17,6 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener,
         PageFragment.OnFragmentInteractionListener {
 
-    final private String[] pageTitles = {"HOME", "SEARCH", "SETTINGS"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,23 +26,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
         ViewPager viewPager = (ViewPager)findViewById(R.id.pager);
-        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-                return PageFragment.newInstance(position + 1);
-            }
-
-            @Override
-            public CharSequence getPageTitle(int position) {
-                return pageTitles[position];
-            }
-
-            @Override
-            public int getCount() {
-                return pageTitles.length;
-            }
-        };
-
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(this);
 
